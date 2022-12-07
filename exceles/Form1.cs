@@ -100,6 +100,23 @@ namespace exceles
             Excel.Range utolsoOszlopRange = xlSheet.get_Range("F1", Type.Missing).get_Resize(lastRowID, 1);
             utolsoOszlopRange.Interior.Color = Color.LightGreen;
             utolsoOszlopRange.Style.NumberFormat.Format = "#,##0";
+
+            string GetCell(int x, int y)
+            {
+                string ExcelCoordinate = "";
+                int dividend = y;
+                int modulo;
+
+                while (dividend > 0)
+                {
+                    modulo = (dividend - 1) % 26;
+                    ExcelCoordinate = Convert.ToChar(65 + modulo).ToString() + ExcelCoordinate;
+                    dividend = (int)((dividend - modulo) / 26);
+                }
+                ExcelCoordinate += x.ToString();
+
+                return ExcelCoordinate;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
