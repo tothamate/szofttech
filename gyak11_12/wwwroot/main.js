@@ -27,17 +27,17 @@
     function kérdésMegjelenítés(kerdes) {
         if (!kerdes) return
         console.log(kerdes);
-        document.getElementById("kérdés_szöveg").innerText = kerdes.questionId
+        document.getElementById("kérdés_szöveg").innerText = kerdes.question1
         document.getElementById("válasz1").innerText = kerdes.answer1
         document.getElementById("válasz2").innerText = kerdes.answer2
         document.getElementById("válasz3").innerText = kerdes.answer3
         jóVálasz = kerdes.correctAnswer
-        if (kerdes.image) {
-            document.getElementById("kép").src = "https://szoft1.comeback.hu/hajo/" + kerdes.image;
-            document.getElementById("kép").classList.remove("rejtett")
+        if (kerdes.image != "") {
+            document.getElementById("kép1").src = "https://szoft1.comeback.hu/hajo/" + kerdes.image;
+            document.getElementById("kép1").classList.remove("rejtett")
         }
         else {
-            document.getElementById("kép").classList.add("rejtett")
+            document.getElementById("kép1").classList.add("rejtett")
         }
         document.getElementById("válasz1").classList.remove("jo", "rossz");
         document.getElementById("válasz2").classList.remove("jo", "rossz");
