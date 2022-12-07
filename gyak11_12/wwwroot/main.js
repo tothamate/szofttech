@@ -5,29 +5,35 @@
     kérdésBetöltés(questionId)
 }
     var jóVálasz
-    var questionId = 1
+    var questionId = 3
 
     
     function előre() {
         questionId++
         kérdésBetöltés(questionId)
+        if (questionId == 860) {
+            questionId = 1
+        }
     }
 
     function vissza() {
         questionId--
         kérdésBetöltés(questionId)
+        if (questionId == 0) {
+            questionId = 859
+        }
     }
 
     function kérdésMegjelenítés(kerdes) {
         if (!kerdes) return
         console.log(kerdes);
-        document.getElementById("kérdés_szöveg").innerText = kerdes.questionText
+        document.getElementById("kérdés_szöveg").innerText = kerdes.questionId
         document.getElementById("válasz1").innerText = kerdes.answer1
         document.getElementById("válasz2").innerText = kerdes.answer2
         document.getElementById("válasz3").innerText = kerdes.answer3
         jóVálasz = kerdes.correctAnswer
-        if (kérdés.image) {
-            document.getElementById("kép").src = "https://szoft1.comeback.hu/hajo/" + kérdés.image;
+        if (kerdes.image) {
+            document.getElementById("kép").src = "https://szoft1.comeback.hu/hajo/" + kerdes.image;
             document.getElementById("kép").classList.remove("rejtett")
         }
         else {
