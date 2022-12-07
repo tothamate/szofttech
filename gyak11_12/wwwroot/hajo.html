@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <script src="main.js"></script>
 </head>
 <body>
     <div id="külső">
@@ -24,6 +25,10 @@
                 height: 100%;
                 display: flex;
                 flex-direction: column;
+            }
+
+            #rejtett{
+                display: none;
             }
 
             #kérdés_szöveg{
@@ -67,7 +72,7 @@
             }
 
             .jo{
-                background-color: lawngreen;
+                background-color: green;
             }
 
             .rossz{
@@ -77,17 +82,17 @@
 
         <div id="középső">
             <div id="válaszok">
-                <div id="válasz1" class="kerdes kattinthato">Válasz 1</div>
-                <div id="válasz2" class="kerdes kattinthato">Válasz 2</div>
-                <div id="válasz3" class="kerdes kattinthato">Válasz 3</div>
+                <div id="válasz1" onclick="választás(1)" class="kerdes kattinthato">Válasz 1</div>
+                <div id="válasz2" onclick="választás(2)" class="kerdes kattinthato">Válasz 2</div>
+                <div id="válasz3" onclick="választás(3)" class="kerdes kattinthato">Válasz 3</div>
             </div>
             <div id="kép">
-                <img id="kép1" src="https://kzgzdiag426.blob.core.windows.net/netcore/teszt-0050.jpg" />
+                <img id="kép1"/>
             </div>
         </div>
         <div id="vezérlő">
-            <div class="gomb kattintható">Vissza</div>
-            <div class="gomb kattintható">Előre</div>
+            <div id="vissza_gomb" class="gomb kattinthato">Vissza</div>
+            <div id="elore_gomb" class="gomb kattinthato">Előre</div>
         </div>
     </div>
 </body>
