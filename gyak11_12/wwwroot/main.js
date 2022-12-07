@@ -1,4 +1,5 @@
-﻿var hotList = [];           //Az éppen gyakoroltatott kérdések listája 
+﻿var timeoutHandler;
+var hotList = [];           //Az éppen gyakoroltatott kérdések listája
 var questionsInHotList = 3; //Ez majd 7 lesz, teszteléshez jobb a 3. 
 var displayedQuestion;      //A hotList-ből éppen ez a kérdés van kint
 var numberOfQuestions;      //Kérdések száma a teljes adatbázisban
@@ -32,6 +33,7 @@ function init() {
 }
     
 function előre() {
+    clearTimeout(timeoutHandler)
     displayedQuestion++;
     if (displayedQuestion == questionsInHotList) displayedQuestion = 0;
     kérdésMegjelenítés()
@@ -43,7 +45,10 @@ function előre() {
         kérdésMegjelenítés()
     }
 
-    function kérdésMegjelenítés() {
+function kérdésMegjelenítés() {
+    document.getElementById(`válasz1`).style.pointerEvents = "all"
+    document.getElementById(`válasz2`).style.pointerEvents = "all"
+    document.getElementById(`válasz3`).style.pointerEvents = "all"
         let kerdes = hotList[displayedQuestion].question;
         console.log(kerdes);
         document.getElementById("kérdés_szöveg").innerText = kerdes.question1
@@ -110,5 +115,11 @@ function választás(n) {
             kérdésBetöltés(nextQuestion, displayedQuestion);
             nextQuestion++;
         }
+        if(nextQuestion == 860) nextQuestion = 1
+        
     }
+    document.getElementById(`válasz1`).style.pointerEvents = "none"
+    document.getElementById(`válasz2`).style.pointerEvents = "none"
+    document.getElementById(`válasz3`).style.pointerEvents = "none"
+    timeoutHandler = setTimeout(előre, 3000);
 }

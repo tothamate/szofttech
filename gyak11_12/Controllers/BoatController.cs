@@ -20,7 +20,7 @@ namespace gyak11_12.Controllers
 
         [HttpGet]
         [Route("questions/count")]
-        public int M4() //Tetszőleges metódusnév
+        public int M4()
         {
             HajosContext context = new HajosContext();
             int kérdésekSzáma = context.Questions.Count();
