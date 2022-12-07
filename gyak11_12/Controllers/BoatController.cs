@@ -19,6 +19,16 @@ namespace gyak11_12.Controllers
         }
 
         [HttpGet]
+        [Route("questions/count")]
+        public int M4() //Tetszőleges metódusnév
+        {
+            HajosContext context = new HajosContext();
+            int kérdésekSzáma = context.Questions.Count();
+
+            return kérdésekSzáma;
+        }
+
+        [HttpGet]
         [Route("questions/{sorszam}")]
         public ActionResult SpecificKerdes(int sorszam)
         {
