@@ -79,6 +79,27 @@ namespace exceles
             adatRange.Value2 = adatTömb;
 
             adatRange.Columns.AutoFit();
+
+            Excel.Range fejllécRange = xlSheet.get_Range("A1", Type.Missing).get_Resize(1, 6);
+            fejllécRange.Font.Bold = true;
+            fejllécRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            fejllécRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            fejllécRange.EntireColumn.AutoFit();
+            fejllécRange.RowHeight = 40;
+            fejllécRange.Interior.Color = Color.Fuchsia;
+            fejllécRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+     
+            adatRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+            int lastRowID = xlSheet.UsedRange.Rows.Count;
+
+            Excel.Range elsoOszlopRange = xlSheet.get_Range("A1",Type.Missing).get_Resize(lastRowID,1);
+            elsoOszlopRange.Font.Bold = true;
+            elsoOszlopRange.Interior.Color = Color.LightYellow;
+
+            Excel.Range utolsoOszlopRange = xlSheet.get_Range("F1", Type.Missing).get_Resize(lastRowID, 1);
+            utolsoOszlopRange.Interior.Color = Color.LightGreen;
+            utolsoOszlopRange.Style.NumberFormat.Format = "#,##0";
         }
 
         private void Form1_Load(object sender, EventArgs e)
